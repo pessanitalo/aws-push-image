@@ -12,14 +12,6 @@ pipeline {
                 echo 'Iniciando o build'
             }
         }
-        stage('Debug Environment Variables') {
-            steps {
-                script {
-                        echo "echo REGION=${REGION}"
-                        echo "echo REPOSITORY_URI=${REPOSITORY_URI}"
-                    }
-                }
-             }
 
         stage('Debug Login Command') {
             steps {
@@ -30,11 +22,11 @@ pipeline {
             }
         }
 
-
         stage('Login no ECR') {
             steps {
                 script {
                     withAWS(credentials: 'jenkins-credential', region: 'us-east-1') {
+                        bat 'aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
                     }
                 }
             }
