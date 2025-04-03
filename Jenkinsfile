@@ -12,9 +12,7 @@ pipeline {
                 echo 'Iniciando o build'
             }
         }
-    }
-
-    stages {
+ 
         stage('StartAuthenticate to ECR') {
             steps {
                script{
