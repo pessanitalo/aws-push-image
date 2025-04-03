@@ -13,4 +13,16 @@ pipeline {
             }
         }
     }
+
+    stages {
+        stage('StartAuthenticate to ECR') {
+            steps {
+               script{
+                     withCredentials([usernamePassword(credentialsId: "${AWS_CREDENTIALS_ID}", usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                        sh 'aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
+                   }
+               }
+            }
+        }
+    }
 }
