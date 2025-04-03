@@ -21,6 +21,16 @@ pipeline {
                 }
              }
 
+        stage('Debug Login Command') {
+            steps {
+                script {
+                    bat "aws ecr get-login-password --region ${REGION} > login-output.txt"
+                    bat "type login-output.txt"
+                }
+            }
+        }
+
+
         stage('Login no ECR') {
             steps {
                 script {
