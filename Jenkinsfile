@@ -1,7 +1,7 @@
 pipeline {
     agent any
       environment {
-        AWS_CREDENTIALS_ID = 'aws-credentials'
+        AWS_CREDENTIALS_ID = 'b8e7a213-f420-41c0-9c71-e81fc7c21842'
         REGION = 'us-east-1'
         REPOSITORY_URI = '081882787657.dkr.ecr.us-east-1.amazonaws.com/jenkins-push-image'
     }
