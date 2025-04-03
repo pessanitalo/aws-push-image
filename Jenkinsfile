@@ -12,7 +12,15 @@ pipeline {
                 echo 'Iniciando o build'
             }
         }
- 
+        stage('Debug Environment Variables') {
+            steps {
+                script {
+                        bat "echo REGION=${REGION}"
+                        bat "echo REPOSITORY_URI=${REPOSITORY_URI}"
+                    }
+                }
+             }
+
         stage('Login no ECR') {
             steps {
                 script {
