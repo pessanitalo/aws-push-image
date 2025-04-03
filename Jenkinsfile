@@ -15,8 +15,8 @@ pipeline {
         stage('Debug Environment Variables') {
             steps {
                 script {
-                        bat "echo REGION=${REGION}"
-                        bat "echo REPOSITORY_URI=${REPOSITORY_URI}"
+                        echo "echo REGION=${REGION}"
+                        echo "echo REPOSITORY_URI=${REPOSITORY_URI}"
                     }
                 }
              }
