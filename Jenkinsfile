@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     withAWS(credentials: "${AWS_CREDENTIALS_ID}", region: "${REGION}") {
-                        sh 'aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
+                        bat 'aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
                     }
                 }
             }
